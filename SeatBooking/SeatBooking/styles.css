@@ -1,0 +1,73 @@
+/* styles.css */
+
+/* Navbar */
+.navbar {
+  background-color: #343a40; /* dark gray */
+}
+
+.navbar-brand {
+  color: #ffc107 !important; /* yellow */
+}
+
+.nav-link {
+  color: #ffffff !important; /* white */
+}
+
+.navbar-toggler-icon {
+  background-color: #ffffff; /* white */
+}
+
+/* Form */
+.form-control {
+  border-color: #ced4da; /* light gray */
+}
+
+.btn-warning {
+  background-color: #ffc107; /* yellow */
+  border-color: #ffc107; /* yellow */
+}
+
+.btn-info {
+  background-color: #17a2b8; /* teal */
+  border-color: #17a2b8; /* teal */
+}
+
+/* Alerts */
+.alert {
+  margin-top: 20px;
+}
+
+.alert-danger {
+  background-color: #f8d7da; /* light red */
+  border-color: #f5c6cb; /* red */
+}
+
+.alert-success {
+  background-color: #d4edda; /* light green */
+  border-color: #c3e6cb; /* green */
+}
+
+/* Table */
+.table {
+  margin-top: 20px;
+}
+
+.table th, .table td {
+  border-top: 1px solid #dee2e6; /* light gray */
+}
+
+.table th {
+  background-color: #f8f9fa; /* light gray */
+}
+
+/* Buttons */
+.btn-xs {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.btn-danger {
+  background-color: #dc3545; /* red */
+  border-color: #dc3545; /* red */
+  color: #ffffff; /* white */
+}

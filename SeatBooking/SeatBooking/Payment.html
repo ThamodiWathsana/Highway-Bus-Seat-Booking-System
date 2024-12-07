@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="Payment.css">
+
+</head>
+<body>
+
+<div class="container">
+
+    <form id="paymentForm" action="Payment.php" method="post" onsubmit="return Validation()">
+
+        <div class="row">
+           
+            <div class="col">
+
+                <h3 class="title">Card Details</h3>
+
+                <div class="inputBox">
+                    <span>cards accepted :</span>
+                    <img src="card_img.png" alt="">
+                </div>
+                <div class="inputBox">
+                    <span>name on card :</span>
+                    <input type="text" placeholder="mr. john deo" name="txtNOC" id="txtNOC">
+                </div>
+                <div class="inputBox">
+                    <span>credit card number :</span>
+                    <input type="number" placeholder="1111-2222-3333-4444" name="txtCN" id="txtCN">
+                </div>
+
+                <div class="flex">
+                    <div class="inputBox">
+                        <span>Expiry :</span>
+                        <input type="text" id="expiry" placeholder="MM/YY" name="txtExpiry" id="txtExpiry">
+                    </div>
+                    <div class="inputBox">
+                        <span>CVV :</span>
+                        <input type="text" placeholder="1234" name="txtCVV" id="txtCVV">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col">
+
+                <h3 class="title">Payment Details</h3>
+
+                <div class="inputBox">
+                    <span>Amount :</span>
+                    <input type="text" placeholder="2500" name="txtAmount" id="txtAmount">
+                </div>
+                <div class="inputBox">
+                    <span>Booking ID :</span>
+                    <input type="text" placeholder="GADSE231f002" name="txtBooking" id="txtBooking">
+                </div>
+                <div class="inputBox">
+                    <span>Payment Date :</span>
+                    <!-- Set value to current date -->
+                    <input type="Date" name="txtPayDate" id="paymentDate" placeholder="08/04/2024">
+                </div>
+            </div>
+
+    
+        </div>
+
+        <input type="submit" value="Pay Now" class="submit-btn">
+
+        <script>
+        // Set payment date to current date
+        window.onload = function() {
+            let currentDate = new Date();
+            let day = currentDate.getDate();
+            let month = currentDate.getMonth() + 1;
+            let year = currentDate.getFullYear();
+            let formattedDate = (month < 10 ? '0' : '') + month + '/' + (day < 10 ? '0' : '') + day + '/' + year;
+            document.getElementById('paymentDate').value = formattedDate;
+        };
+
+        // Automatically add "/" after the month in the expiry field
+        document.getElementById("expiry").addEventListener("input", function(event) {
+            let input = event.target.value;
+            if (input.length === 2 && !input.includes("/")) {
+                event.target.value = input + "/";
+            }
+        });
+
+        function Validation() {
+            var msg = "# fix these errors #\n";
+            var flag = 0;
+
+            if (document.getElementById("txtNOC").value == "") {
+                msg = msg + "Name on card can't be blank\n";
+                flag = 1;
+            }
+            if (document.getElementById("txtCN").value == "") {
+                msg = msg + "Credit card number can't be blank\n";
+                flag = 1;
+            }
+            if (document.getElementById("txtExpiry").value == "") {
+                msg = msg + "Expiry can't be blank\n";
+                flag = 1;
+            }
+            if (document.getElementById("txtCVV").value == "") {
+                msg = msg + "CVV number can't be blank\n";
+                flag = 1;
+            }
+            if (document.getElementById("txtAmount").value == "") {
+                msg = msg + "Amount can't be blank\n";
+                flag = 1;
+            }
+            if (document.getElementById("txtBooking").value == "") {
+                msg = msg + "Booking ID can't be blank\n";
+                flag = 1;
+            }
+            if (document.getElementById("txtPayDate").value == "") {
+                msg = msg + "Payment date can't be blank\n";
+                flag = 1;
+            }
+            if (flag == 1) {
+                alert(msg);
+                return false; // Prevent form submission
+            }
+            return true; // Allow form submission if all fields are filled
+        }
+        </script>
+
+    </form>
+
+</div>   
+    
+</body>
+</html>

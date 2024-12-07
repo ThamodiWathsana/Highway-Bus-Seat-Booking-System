@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Filter And Search</title>
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="SearchBusStyle.css" />
+    <style>
+      body {
+        background-image: url('bg.jpg');
+        background-size: cover;
+      }
+
+    .hi-slide {
+        position: relative;
+        width: 800px; /* adjusted width */
+        height: 600 px; /* adjusted height */
+        border-radius: 50px;
+        margin: 80px auto 0;
+      }
+    .hi-slide.hi-next,
+    .hi-slide.hi-prev {
+        position: absolute;
+        top: 50%;
+        width: 40px;
+        height: 40px;
+        margin-top: -20px;
+        border-radius: 50px;
+        line-height: 40px;
+        text-align: center;
+        cursor: pointer;
+        background-color: white;
+        color: black;
+        transition: all 1.2s;
+        font-size: 20px;
+        font-weight: bold;
+        background-position: center;
+      }
+
+    .hi-slide.hi-next:hover,
+    .hi-slide.hi-prev:hover {
+        opacity: 1;
+        background-color: white;
+      }
+
+    .hi-slide.hi-prev {
+        left: 59px;
+      }
+
+    .hi-slide.hi-prev::before {
+        content: '<';
+      }
+
+    .hi-slide.hi-next {
+        right: -59px;
+      }
+
+    .hi-slide.hi-next::before {
+        content: '>';
+      }
+
+    .hi-slide > ul {
+        list-style: none;
+        position: relative;
+        width:800 px; /* adjusted width */
+        height: 600 px; /* adjusted height */
+        margin: 0;
+        padding: 0;
+      }
+
+    .hi-slide > ul > li {
+        overflow: hidden;
+        position: absolute;
+        z-index: 0;
+        left: 0;
+        top: 0;
+        width: 800px;
+        height: 600px;
+        margin: 0;
+        padding: 0;
+        border: none;
+        cursor: pointer;
+        background-color: #333;
+        background-position: center;
+      }
+
+    .hi-slide > ul > li > img {
+        width: 100%;
+        height: 100%;
+        background-position: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div id="search-container">
+        <input
+          type="search"
+          id="search-input"
+          placeholder="Search product name here.."
+        />
+        <button id="search">Search</button>
+      </div>
+      <div id="buttons">
+        <button class="button-value" onclick="filterProduct('all')">All</button>
+        <button class="button-value" onclick="filterProduct('Colombo')">
+          Colombo
+        </button>
+        <button class="button-value" onclick="filterProduct('Mathara')">
+          Mathara
+        </button>
+        <button class="button-value" onclick="filterProduct('Kandy')">
+          Kandy
+        </button>
+        <button class="button-value" onclick="filterProduct('Hambanthota')">
+          Hambanthota
+        </button>
+      </div>
+
+      <div class="slide hi-slide">
+        <div class="hi-prev"></div>
+        <div class="hi-next"></div>
+        <ul>
+          <li>
+            <img
+              src="https://cdn.pixabay.com/photo/2015/08/13/18/56/bus-887362_640.jpg"
+              alt="" width="800" height="600"
+            />
+          </li>
+          <li>
+            <img
+              src="https://images.pexels.com/photos/3751007/pexels-photo-3751007.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="" width="800" height="600"
+            />
+          </li>
+          <li>
+            <img
+              src="https://images.pexels.com/photos/3126936/pexels-photo-3126936.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="" width="800" height="600"
+            />
+          </li>
+          <li>
+            <img
+              src="https://images.pexels.com/photos/13768733/pexels-photo-13768733.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="" width="800" height="600"
+            />
+          </li>
+          <li>
+            <img
+              src="https://images.pexels.com/photos/5802052/pexels-photo-5802052.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="" width="800" height="600"
+            />
+          </li>
+          <li>
+            <img
+              src="https://images.pexels.com/photos/18194589/pexels-photo-18194589/free-photo-of-bus-on-street-in-city.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="" width="800" height="600"
+            />
+          </li>
+          <li>
+            <img
+              src="https://images.pexels.com/photos/18199668/pexels-photo-18199668/free-photo-of-traffic-on-a-bridge-at-sunset.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="" width="800" height="600"
+            />
+          </li>
+        </ul>
+      </div>
+
+      <!-- Added center CSS property for .hi-slide class -->
+      <style>
+        .hi-slide {
+          text-align: center;
+        }
+      </style>
+
+      <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+      <script src="jquery.hislide.js"></script>
+      <script>
+        $('.slide').hiSlide();
+      </script>
+
+      <div id="products"></div>
+    </div>
+    <!-- Script -->
+    <script src="Searchscript.js"></script>
+  </body>
+</html>

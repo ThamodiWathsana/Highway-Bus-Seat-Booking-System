@@ -1,0 +1,457 @@
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Karla:ital,wght@0,200..800;1,200..800&family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* -----------------Footer----------------- */
+#footer {
+    display: grid;
+    width: 100%;
+    margin-top: 20px;
+    height: auto;
+    grid-template-rows: (4, 1fr);
+    grid-gap: 45px;
+    position: absolute;
+    border-radius: 20px;
+}
+
+#ratings,
+#about,
+#services,
+#contact {
+    justify-self: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 60px 20px rgba(79, 76, 76, 0.221);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.54);
+}
+
+#promo-video {
+    position: absolute;
+    border-radius: 20px;
+    width: auto;
+    min-width: 960px;
+    min-height: 1900px;
+    height: auto;
+    object-fit: cover;
+    z-index: -1;
+    border-radius: 10px;
+}
+
+#promo-video video {
+    border-radius: 30px;
+}
+
+/* --------------Feedbacks---------------- */
+#ratings {
+    grid-row: 1;
+    display: grid;
+    width: 85%;
+    height: auto;
+    grid-template-rows: 30% 70%;
+    padding-bottom: 3rem;
+    padding-right: 0;
+    padding-left: 0;
+    margin-top: 40px;
+}
+
+#ratings h2 {
+    grid-row: 1;
+    font-size: calc(12px + 2.2vw);
+    font-family: "Work Sans";
+    font-weight: 580;
+    margin-top: 0.5%;
+    margin-bottom: 1%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+}
+
+#ratings #wrapper {
+    display: grid;
+    grid-row: 2;
+    height: auto;
+    width: auto;
+    grid-auto-flow: column;
+    grid-auto-columns: 10% 80% 10%;
+    padding: 3%;
+    margin-bottom: 2.2%;
+}
+
+#ratings #wrapper i {
+    font-size: calc(13px + 1.4vw);
+    color: white;
+    align-self: center;
+    background-color: rgba(3, 2, 8, 0.756);
+    border-radius: 50%;
+    height: 47px;
+    width: 47px;
+    text-align: center;
+    justify-self: center;
+    line-height: 50px;
+    z-index: 101;
+    box-shadow: 0px 0px 13px 2px rgba(79, 76, 76, 0.7);
+    cursor: pointer;
+}
+
+#ratings #wrapper #feedback-prev {
+    grid-column: 1;
+}
+
+#ratings #wrapper #feedback-next {
+    grid-column: 3;
+}
+
+#ratings #wrapper #coursel {
+    grid-column: 2;
+    overflow-wrap: break-word;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc(94%/3);
+    grid-gap: 3%;
+    height: fit-content;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    justify-self: center;
+    scrollbar-width: 0;
+    scroll-snap-type: x mandatory;
+    padding-left: 1.5%;
+    padding-right: 1.5%;
+}
+
+#ratings #wrapper #coursel .card {
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 0%;
+    height: 95%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.64);
+    box-shadow: 0px 0px 10px 1px rgba(79, 76, 76, 0.4);
+    border-radius: 20px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 0;
+    margin-right: 0;
+    z-index: 100;
+}
+
+#ratings #wrapper #coursel .card .customer {
+    display: grid;
+    grid-auto-columns: 5rem 65%;
+    height: auto;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 3%;
+    padding-bottom: 2%;
+}
+
+#ratings #wrapper #coursel .card .customer .image {
+    grid-column: 1;
+    height: auto;
+    width: 4.5rem;
+    border-radius: 38px;
+}
+
+#ratings #wrapper #coursel .card .customer .name {
+    grid-column: 2;
+    font-size: calc(14px + 0.4vw);
+    width: 100%;
+    height: auto;
+    margin-top: 10%;
+    margin-left: 1%;
+}
+
+#ratings #wrapper #coursel .card .msg {
+    font-size: calc(10px + 0.5vw);
+    width: 100%;
+    height: 3.6rem;
+    margin-left: 6%;
+    width: fit-content;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: calc(9% - 1vw);
+}
+
+
+@media screen and (max-width: 900px) {
+    #ratings #wrapper #coursel {
+        grid-auto-columns: calc(48.5%);
+    }
+
+    #ratings #wrapper i {
+        margin-top: 45%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #ratings #wrapper #coursel {
+        grid-auto-columns: calc(100%);
+    }
+
+    #ratings #wrapper #coursel .card .customer .name {
+        font-size: calc(16px + 0.4vw);
+    }
+
+}
+
+
+/* -----------------About----------------- */
+#about {
+    grid-row: 2;
+    display: grid;
+    width: 85%;
+    grid-template-columns: 30% 70%;
+}
+
+#about img {
+    grid-column: 1;
+    display: flex;
+    align-self: center;
+    height: auto;
+    width: calc(80%);
+}
+
+#about .text {
+    align-self: center;
+    grid-column: 2;
+    display: flexbox;
+    height: auto;
+    width: 80%;
+    grid-template-rows: 40% 60%;
+}
+
+#about .text h2 {
+    grid-row: 1;
+    font-size: calc(25px + 2vw);
+    font-family: "Work Sans";
+    font-weight: 580;
+    margin-left: 10px;
+    margin-top: 4%;
+    margin-bottom: 2%;
+    align-self: center;
+}
+
+#about .text p {
+    grid-row: 2;
+    font-size: calc(11px + 0.6vw);
+    font-family: "Quicksand";
+    margin-left: 10px;
+    margin-top: 3%;
+    margin-bottom: 8%;
+}
+
+
+@media screen and (max-width: 1187px) {
+    #about img {
+        margin-top: 10%;
+        align-self: normal;
+    }
+}
+
+/* ---------------Services---------------- */
+#services {
+    grid-row: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 85%;
+}
+
+#services .text {
+    display: grid;
+    height: auto;
+    width: 91.4%;
+    grid-template-rows: 18% 82%;
+}
+
+#services .text h2 {
+    grid-row: 1;
+    font-size: calc(25px + 2vw);
+    font-family: "Work Sans";
+    font-weight: 580;
+    margin-top: 0.6%;
+    margin-bottom: 1%;
+    justify-self: center;
+    height: max-content;
+}
+
+#services .text ul {
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 2%;
+    height: max-content;
+    width: 95%;
+    margin-left: 2%;
+    padding-right: 6.5%;
+    margin-bottom: 17px;
+    margin-top: 2%;
+    justify-self: center;
+}
+
+#services .text ul li {
+    justify-self: center;
+    list-style-type: none;
+}
+
+#services .text ul li h3 {
+    font-size: calc(13px + 0.3vw);
+    font-family: "Gabarito";
+    margin-left: 3%;
+    margin-top: 1%;
+    margin-bottom: 9%;
+    text-align: left;
+}
+
+#services .text ul li p {
+    font-size: calc(5px + 0.6vw);
+    font-family: "Quicksand";
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 3%;
+    margin-bottom: 8%;
+}
+
+
+
+/* ---------------Contact----------------  */
+#contact {
+    grid-row: 4;
+    display: grid;
+    width: 85%;
+    height: 85%;
+    grid-auto-flow: row;
+    grid-auto-rows: 15% 85%;
+    margin-bottom: 1.5%;
+}
+
+#contact h2 {
+    grid-column: 1;
+    font-size: calc(25px + 2vw);
+    font-family: "Work Sans";
+    font-weight: 580;
+    margin-left: 10px;
+    margin-top: 1%;
+    margin-bottom: 13px;
+    align-self: center;
+    justify-self: center;
+}
+
+#contact #contact-method {
+    display: grid;
+    /* grid-auto-flow: column;
+    grid-auto-columns: 50% 50%; */
+    grid-template-columns: repeat(2, 1fr);
+    grid-row: 2;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: auto;
+    padding-bottom: 12%;
+    padding-right: 10%;
+}
+
+#contact #contact-method #method-other {
+    grid-column: 1;
+    font-family: "Quicksand";
+    margin-left: 10px;
+    margin-top: 5%;
+    width: 100%;
+    height: auto;
+}
+
+#contact #contact-method #method-other h4 {
+    text-align: center;
+    font-size: calc(5px + 1.4vw);
+    height: 8%;
+    align-self: center;
+    cursor: pointer;
+}
+
+#contact #contact-method #method-other h4 i {
+    color: rgba(0, 0, 0, 0.8);
+    justify-self: center;
+    font-size: calc(8px + 1.4vw);
+    margin-right: 3%;
+}
+
+
+#contact #contact-method #method-email {
+    grid-column: 2;
+    border-radius: 25px;
+    display: grid;
+    height: 70%;
+    width: 100%;
+    max-width: 370px;
+    grid-auto-flow: row;
+    grid-auto-rows: 20% 20% 20% 20%;
+    margin-bottom: 0%;
+    margin-left: 27%;
+    padding-bottom: 20%;
+    padding-top: 10%;
+    align-items: center;
+    justify-items: center;
+    gap: 6%;
+}
+
+#contact #contact-method #method-email input {
+    border-radius: 20px;
+    border: none;
+    height: 80%;
+    width: 90%;
+    border: 3px solid rgba(2, 6, 23, 0.701);
+    padding-left: 7px;
+    background-color: rgba(255, 254, 254, 0);
+}
+
+#contact #contact-method #method-email input[type="text"]::placeholder,
+#contact #contact-method #method-email input[type="email"]::placeholder,
+#contact #contact-method #method-email textarea::placeholder {
+    font-size: calc(12px + 0.3vw);
+    color: rgba(0, 0, 0, 1);
+}
+
+#contact #contact-method #method-email input[type="text"]:focus,
+#contact #contact-method #method-email input[type="email"]:focus,
+#contact #contact-method #method-email textarea:focus {
+    outline: 1px solid rgba(8, 4, 43, 0.804);
+    box-shadow: 0px 0px 10px 1px rgba(8, 4, 43, 0.804);
+}
+
+#contact #contact-method #method-email textarea {
+    border-radius: 20px;
+    border: none;
+    height: 150%;
+    margin-top: 15%;
+    width: 90%;
+    border: 3px solid rgba(2, 6, 23, 0.701);
+    padding-left: 10px;
+    padding-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(255, 254, 254, 0);
+    resize: none;
+}
+
+#contact #contact-method #method-email button {
+    border-radius: 25px;
+    border: none;
+    height: 90%;
+    margin-top: 30%;
+    width: 35%;
+    justify-self: center;
+    color: white;
+    background-color: rgba(2, 6, 23, 0.701);
+    cursor: pointer;
+}
+
+#contact #contact-method #method-email button:hover {
+    box-shadow: 0px 0px 10px 1px rgba(8, 4, 43, 0.804);
+    scale: 1.05;
+}

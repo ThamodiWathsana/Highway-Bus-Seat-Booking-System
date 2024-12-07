@@ -1,0 +1,378 @@
+HTML:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Filter And Search</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="SearchBusStyle.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <div id="search-container">
+      <input
+        type="search"
+        id="search-input"
+        placeholder="Search product name here.."
+      />
+      <button id="search">Search</button>
+    </div>
+    <div id="buttons">
+      <button class="button-value" onclick="filterProduct('all')">
+        All
+      </button>
+      <button class="button-value" onclick="filterProduct('Colombo')">
+        Colombo
+      </button>
+      <button class="button-value" onclick="filterProduct('Mathara')">
+        Mathara
+      </button>
+      <button class="button-value" onclick="filterProduct('Kandy')">
+        Kandy
+      </button>
+      <button class="button-value" onclick="filterProduct('Hambanthota')">
+        Hambanthota
+      </button>
+    </div>
+    <div id="products"></div>
+  </div>
+
+  <div id="image-details" class="hide">
+    <p id="product-name"></p>
+    <p id="product-category"></p>
+    <img id="product-image" src="" alt="">
+    <p id="product-url"></p>
+    <button id="book-button" class="booking-button">Book Now</button>
+    <button id="close-button" class="booking-button">Close</button>
+  </div>
+
+  <script src="Searchscript.js"></script>
+</body>
+</html>
+
+
+CSS:
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f5f8ff;
+}
+
+.wrapper {
+  width: 95%;
+  margin: 0 auto;
+}
+
+#search-container {
+  margin: 1em 0;
+}
+
+#search-container input {
+  background-color: transparent;
+  width: 40%;
+  border-bottom: 2px solid #110f29;
+  padding: 1em 0.3em;
+}
+
+#search-container input:focus {
+  border-bottom-color: #6759ff;
+}
+
+#search-container button {
+  padding: 1em 2em;
+  margin-left: 1em;
+  background-color: darkblue;
+  color: #ffffff;
+  border-radius: 5px;
+  margin-top: 0.5em;
+}
+
+.button-value {
+  border: 2px solid darkblue;
+  padding: 1em 2.2em;
+  border-radius: 3em;
+  background-color: transparent;
+  color: darkblue;
+  cursor: pointer;
+}
+
+.active {
+  background-color: darkblue;
+  color: #ffffff;
+}
+
+#products {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-column-gap: 1.5em;
+  padding: 2em 0;
+}
+
+.card {
+  background-color: #ffffff;
+  max-width: 18em;
+  margin-top: 1em;
+  padding: 1em;
+  border-radius: 5px;
+  box-shadow: 1em 2em 2.5em rgba(1, 2, 68, 0.08);
+}
+
+.image-container {
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+  object-fit: contain;
+  height: 15em;
+  cursor: pointer;
+}
+
+.container {
+  padding-top: 1em;
+  color: #110f29;
+}
+
+.container h5 {
+  font-weight: 500;
+}
+
+.hide {
+  display: none;
+}
+
+@media screen and (max-width: 720px) {
+  img {
+    max-width: 100%;
+    object-fit: contain;
+    height: 10em;
+  }
+
+  .card {
+    max-width: 10em;
+    margin-top: 1em;
+  }
+
+  #products {
+    grid-template-columns: auto;
+    grid-column-gap: 1em;
+  }
+}
+
+.booking-button {
+  background-color: #110f29;
+  padding: 0.5em 2em;
+  border-radius: 3em;
+  color: #ffffff;
+  cursor: pointer;
+  margin-top: 1em;
+  display: block;
+  text-align: center;
+}
+
+.booking-button:hover {
+  background-color: #6759ff;
+}
+
+#image-details {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 1em;
+  border: 1px solid #110f29;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(1, 2, 68, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 80%;
+  z-index: 100;
+}
+
+#image-details p {
+  margin-bottom: 1em;
+}
+
+#image-details img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1em;
+}
+
+#book-button {
+  margin-top: 1em;
+}
+
+#close-button {
+  margin-top: 1em;
+}
+
+.hide {
+  display: none;
+}
+
+
+JavaScript:
+let products = {
+  data: [
+    {
+      productName: "Galle - Colombo",
+      category: "Colombo",
+      image: {
+        src: "https://www.pngall.com/wp-content/uploads/2016/05/Bus-PNG-Picture.png",
+        alt: "Colombo Bus",
+        title: "Colombo Bus",
+      },
+      url: "https://www.example.com/colombo"
+    },
+    //... other products
+  ],
+};
+
+for (let i of products.data) {
+  //Create Card
+  let card = document.createElement("div");
+  //Card should have category and should stay hidden initially
+  card.classList.add("card", i.category, "hide");
+  //image div
+  let imgContainer = document.createElement("div");
+  imgContainer.classList.add("image-container");
+  //anchor tag
+  let anchor = document.createElement("a");
+  anchor.href = i.url;
+  //img tag
+  let image = document.createElement("img");
+  image.setAttribute("src", i.image.src);
+  image.setAttribute("alt", i.image.alt);
+  image.setAttribute("title", i.image.title);
+  image.onclick = function () {
+    window.open(i.url);
+  };
+  anchor.appendChild(image);
+  imgContainer.appendChild(anchor);
+  card.appendChild(imgContainer);
+  //container
+let container = document.createElement("div");
+  container.classList.add("container");
+  //product name
+  let name = document.createElement("h5");
+  name.classList.add("product-name");
+  name.innerText = i.productName.toUpperCase();
+  container.appendChild(name);
+  //booking button
+  let bookingButton = document.createElement("button");
+  bookingButton.classList.add("booking-button");
+  bookingButton.innerText = "Book Now";
+  container.appendChild(bookingButton);
+  //append container to card
+  card.appendChild(container);
+  //append card to products
+  document.getElementById("products").appendChild(card);
+}
+
+//parameter passed from button (Parameter same as category)
+function filterProduct(value) {
+  //Button class code
+  let buttons = document.querySelectorAll(".button-value");
+  buttons.forEach((button) => {
+    //check if value equals innerText
+    if (value.toUpperCase() == button.innerText.toUpperCase()) {
+      button.classList.add("active");
+    } else {
+      button.classList.remove("active");
+    }
+  });
+
+  //select all cards
+  let elements = document.querySelectorAll(".card");
+  //loop through all cards
+  elements.forEach((element) => {
+    //display all cards on 'all' button click
+    if (value == "all") {
+      element.classList.remove("hide");
+    } else {
+      //Check if element contains category class
+      if (element.classList.contains(value)) {
+        //display element based on category
+        element.classList.remove("hide");
+      } else {
+        //hide other elements
+        element.classList.add("hide");
+      }
+    }
+  });
+}
+
+//Search button click
+document.getElementById("search").addEventListener("click", () => {
+  //initializations
+  let searchInput = document.getElementById("search-input").value;
+  let elements = document.querySelectorAll(".product-name");
+  let cards = document.querySelectorAll(".card");
+
+  //loop through all elements
+  elements.forEach((element, index) => {
+    //check if text includes the search value
+    if (element.innerText.includes(searchInput.toUpperCase())) {
+      //display matching card
+      cards[index].classList.remove("hide");
+    } else {
+      //hide others
+      cards[index].classList.add("hide");
+    }
+  });
+});
+
+// Image click event
+document.querySelectorAll(".image-container a img").forEach((img) => {
+  img.addEventListener("click", (e) => {
+    e.preventDefault();
+    let product = e.target.parentNode.parentNode.nextElementSibling;
+    let name = product.querySelector(".product-name");
+    let category = product.querySelector(".container h5");
+    let url = product.querySelector(".container .booking-button");
+    let image = e.target;
+
+    document.getElementById("product-name").innerText = name.innerText;
+    document.getElementById("product-category").innerText = category.innerText;
+    document.getElementById("product-image").setAttribute("src", image.getAttribute("src"));
+    document.getElementById("product-url").innerText = url.getAttribute("href");
+    document.getElementById("image-details").classList.remove("hide");
+
+    // Moving slide effect
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${window.scrollY}px`;
+  });
+});
+
+// Close button event
+document.getElementById("close-button").addEventListener("click", () => {
+  document.getElementById("image-details").classList.add("hide");
+
+  // Reset scroll position
+  document.body.style.position = "";
+  document.body.style.top = "";
+  document.documentElement.style.overflow = "";
+  window.scrollTo(0, document.body.style.top || 0);
+});
+
+//Initially display all products
+window.onload = () => {
+  filterProduct("all");
+};
+
+

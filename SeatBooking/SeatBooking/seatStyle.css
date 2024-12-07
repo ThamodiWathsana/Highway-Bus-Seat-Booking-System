@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+* {
+  border: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+}
+
+body {
+  min-height: 100vh;
+  background: #152238;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Raleway', sans-serif;
+}
+
+.movie-container {
+  perspective: 1000px;
+}
+
+.legend {
+  display: flex;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  justify-content: center;
+  
+}
+
+li {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.screen {
+  height: 7rem;
+  width: 100%;
+  margin: 1rem 0;
+  background: #fff;
+  transform: rotateX(45deg);
+  box-shadow: 0px 4px 10px rgba(255,255,255, 0.8);
+}
+
+.row {
+  display: flex;
+  margin: 0.5rem 0;
+  justify-content: center;
+}
+
+.seat {
+  height: 0.4rem;
+  width: 0.4rem;
+  padding: 0.5rem;
+  background: #777;
+  margin: 0.2rem 0.4rem;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+}
+
+.seat:nth-child(2) {
+  margin-right: 1.5rem;
+}
+
+.seat:nth-child(6) {
+  margin-right: 1.5rem;
+}
+
+.legend .seat:not(.occupied):hover{
+  cursor: default;
+  transform: scale(1);
+  
+}
+
+.seat:not(.occupied):hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.seat.selected {
+  background: #2cf4f4;
+}
+
+.seat.occupied {
+  background: #fff;
+}
+
+p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+small {
+  margin-left: 0.25rem;
+}
